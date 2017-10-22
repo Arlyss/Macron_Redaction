@@ -1,0 +1,6 @@
+/DOCS
+/Sessions/*
+/www/log.txt
+**/*.pspimage
+**/*.db
+**/*.7z

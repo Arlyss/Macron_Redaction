@@ -1,0 +1,279 @@
+<?php
+header("Content-type: text/css"); echo "\n";
+	$color_FI_Red		=	'#CE400F';
+	$color_FI_Blue		=	'#009AB9';
+	$color_FI_BlueGray	=	'#80B0BA';
+	$color_White		=	'#FFFFFF';
+	$color_Gray_Light	=	'#DDDDDD';
+	$color_Gray_Medium	=	'#EEEEEE';
+	$color_Gray_Dark	=	'#B6CBCF';
+	$color_Blue_Light	=	'#EEF3F6';
+	echo "/*\n *\n * =========\n * CAN'T\n * STENCHON\n * THE\n * MELENCHON\n * =========\n *\n *\n */\n";
+?>
+
+ins,del {
+	text-decoration: none;
+}
+
+div[id^='__lpform'][id$='ticket_A'],
+div[id*=' __lpform: ticket_A']{
+	display: none;
+}
+
+div#loadingPanel {
+	position: fixed;
+	bottom: 0%;
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	height: 100%;
+}
+
+div#loadingAnim {
+	position: absolute;
+	top: 5%;
+	left: 50%;
+	width: 50px;
+	height: 50px;
+	margin: 0 0 0 -35px;
+
+    animation:spin 1.5s linear infinite;
+    -o-animation:spin 1.5s linear infinite;
+    -ms-animation:spin 1.5s linear infinite;
+    -moz-animation:spin 1.5s linear infinite;
+	-khtml-animation:spin 1.5s linear infinite;
+	-webkit-animation:spin 1.5s linear infinite;
+}
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@-o-keyframes spin { 100% { -o-transform: rotate(360deg); } }
+@-ms-keyframes spin { 100% { -ms-transform: rotate(360deg); } }
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-khtml-keyframes spin { 100% { -khtml-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+
+div#loadingAnim div.loadingAnimDot {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: <?= $color_FI_Blue ?>;
+	border-radius: 6px;
+}
+
+div#loadingAnim div.loadingAnimDot.lad1 {	top:   0%;	left:  50%;	margin:     0 0 0  -5px;}
+div#loadingAnim div.loadingAnimDot.lad2 {	top: 100%;	left:  50%;	margin: -10px 0 0  -5px;}
+div#loadingAnim div.loadingAnimDot.lad3 {	top:  50%;	left:   0%;	margin:  -5px 0 0     0;}
+div#loadingAnim div.loadingAnimDot.lad4 {	top:  50%;	left: 100%;	margin:  -5px 0 0 -10px;}
+div#loadingAnim div.loadingAnimDot.lad5 {	top:  22%;	left:  22%;	margin:  -5px 0 0  -5px;}
+div#loadingAnim div.loadingAnimDot.lad6 {	top:  22%;	left:  78%;	margin:  -5px 0 0  -5px;}
+div#loadingAnim div.loadingAnimDot.lad7 {	top:  78%;	left:  22%;	margin:  -5px 0 0  -5px;}
+div#loadingAnim div.loadingAnimDot.lad8 {	top:  78%;	left:  78%;	margin:  -5px 0 0  -5px;}
+
+
+div#loadingPanel {
+	position: fixed;
+	left: 0;
+	bottom: 0%;
+	width: 100%;
+	height: 100%;
+
+	background-image: linear-gradient(top,#eee,#fff);
+	background-image: -o-linear-gradient(top,#eee,#fff);
+	background-image: -ms-linear-gradient(top,#eee,#fff);
+	background-image: -moz-linear-gradient(top,#eee,#fff);
+	background-image: -khtml-linear-gradient(top,#eee,#fff);
+	background-image: -webkit-linear-gradient(top,#eee,#fff);
+
+	transform-origin: 0 0;
+	-o-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	-khtml-transform-origin: 0 0;
+	-webkit-transform-origin: 0 0;
+
+	transform: rotateZ(0deg);
+	-o-transform: rotateZ(0deg);
+	-ms-transform: rotateZ(0deg);
+	-moz-transform: rotateZ(0deg);
+	-khtml-transform: rotateZ(0deg);
+	-webkit-transform: rotateZ(0deg);
+
+	box-shadow: 4px 6px 16px 6px rgba(0,0,0,0.25);
+	-o-box-shadow: 4px 6px 16px 6px rgba(0,0,0,0.25);
+	-ms-box-shadow: 4px 6px 16px 6px rgba(0,0,0,0.25);
+	-moz-box-shadow: 4px 6px 16px 6px rgba(0,0,0,0.25);
+	-khtml-box-shadow: 4px 6px 16px 6px rgba(0,0,0,0.25);
+	-webkit-box-shadow: 4px 6px 16px 6px rgba(0,0,0,0.25);
+
+	transition-timing-function: ease-out;
+	-o-transition-timing-function: ease-out;
+	-ms-transition-timing-function: ease-out;
+	-moz-transition-timing-function: ease-out;
+	-khtml-transition-timing-function: ease-out;
+	-webkit-transition-timing-function: ease-out;
+
+	transition: bottom 1.0s,         transform 0.5s;
+	-o-transition: bottom 1.0s,      -o-transform 0.5s;
+	-ms-transition: bottom 1.0s,     -ms-transform 0.5s;
+	-moz-transition: bottom 1.0s,    -moz-transform 0.5s;
+	-khtml-transition: bottom 1.0s,  -khtml-transform 0.5s;
+	-webkit-transition: bottom 1.0s, -webkit-transform 0.5s;
+}
+div#loadingPanel.hide_A {
+	transform: rotateZ(20deg);
+	-o-transform: rotateZ(20deg);
+	-ms-transform: rotateZ(20deg);
+	-moz-transform: rotateZ(20deg);
+	-khtml-transform: rotateZ(20deg);
+	-webkit-transform: rotateZ(20deg);
+}
+div#loadingPanel.hide_B {
+	bottom: -100%;
+
+	transform: rotateZ(30deg);
+	-o-transform: rotateZ(30deg);
+	-ms-transform: rotateZ(30deg);
+	-moz-transform: rotateZ(30deg);
+	-khtml-transform: rotateZ(30deg);
+	-webkit-transform: rotateZ(30deg);
+}
+
+div#mainBoxes {
+	display: block;
+	position: absolute;
+	top: -40%;
+	width: 100%;
+	height: 205px;
+	padding: 0 0 20px 0;
+	background-color: #fff;
+	border: 2px solid #aaa;
+	border-left: 0;
+	border-right: 0;
+
+	transition: top 0.5s;
+	-o-transition: top 0.5s;
+	-ms-transition: top 0.5s;
+	-moz-transition: top 0.5s;
+	-khtml-transition: top 0.5s;
+	-webkit-transition: top 0.5s;
+}
+
+div#mainBoxes div#mainBoxesAlign {
+	position: absolute;
+	top: 0;
+	left: calc(50% - 378px);
+	width: 776px;
+}
+
+div#mainBoxes div.mainBox {
+	float: left;
+	width: 366px;
+	border: 1px solid #ccc;
+	padding: 0 0 30px 0;
+	margin: 20px 20px 0 0;
+	height: 155px;
+	background-color #fff;
+
+	background-image: linear-gradient(top,#eef,#fafafa);
+	background-image: -o-linear-gradient(top,#eef,#fafafa);
+	background-image: -ms-linear-gradient(top,#eef,#fafafa);
+	background-image: -moz-linear-gradient(top,#eef,#fafafa);
+	background-image: -khtml-linear-gradient(top,#eef,#fafafa);
+	background-image: -webkit-linear-gradient(top,#eef,#fafafa);
+
+	border-radius: 4px;
+	-o-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+div#mainBoxes div.mainBox div.title {
+    padding: 10px;
+    background-color: #d8d9fc;
+    color: #337;
+}
+
+div#mainBoxes div.mainBox form {
+    margin: 10px;
+}
+
+div#mainBoxes form p del input[name^='TB_ticket'] {
+	letter-spacing: 2px;
+	font-family: courier;
+}
+div#mainBoxes form p del input[name='TB_ticket_A'],
+div#mainBoxes form p del input[name='TB_ticket_B'],
+div#mainBoxes form p del input[name='TB_ticket_C'] {width:40px;}
+div#mainBoxes form p del input[name='TB_ticket_D'] {width:20px;}
+
+div#mainBoxes form p {
+	position: relative;
+}
+
+div#mainBoxes form p del {
+	position: absolute;
+	top: 0;
+	left: 150px;
+	width: 197px;
+}
+
+div#mainBoxes div#ticketBox form p ins {
+	cursor: help;
+}
+
+div#mainBoxes form p del input[name*='mail'],
+div#mainBoxes form p del input[name*='pass'] {
+	width: 192px;
+}
+
+div#mainBoxes form p del input[type='button'] {
+	float: right;
+	border: 1px solid #999;
+	padding: 5px 14px;
+	font-weight: bold;
+	cursor: pointer;
+
+	background-image: linear-gradient(top,#fff,#ccf);
+	background-image: -o-linear-gradient(top,#fff,#ccf);
+	background-image: -ms-linear-gradient(top,#fff,#ccf);
+	background-image: -moz-linear-gradient(top,#fff,#ccf);
+	background-image: -khtml-linear-gradient(top,#fff,#ccf);
+	background-image: -webkit-linear-gradient(top,#fff,#ccf);
+
+	border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+div#mainBoxes form p del input[type='button']:hover {
+	background-image: linear-gradient(top,#fff,#ddf);
+	background-image: -o-linear-gradient(top,#fff,#ddf);
+	background-image: -ms-linear-gradient(top,#fff,#ddf);
+	background-image: -moz-linear-gradient(top,#fff,#ddf);
+	background-image: -khtml-linear-gradient(top,#fff,#ddf);
+	background-image: -webkit-linear-gradient(top,#fff,#ddf);
+}
+
+div#mainBoxes form p span {
+	display: none;
+	z-index: 50;
+	position: absolute;
+	padding: 4px;
+	border: 1px solid #da0;
+	background-color: #ffc;
+	color: #ea0;
+	font-size: 12px;
+	font-weight: normal;
+	text-decoration: none;
+	pointer-events: none;
+
+	border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
