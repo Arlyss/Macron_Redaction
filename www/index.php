@@ -30,8 +30,7 @@ require_once '../config/init.php';
 	<body>
 
 		<!-- TOP -->
-		<div id="top">
-		</div>
+		<div id="top"></div>
 
 		<!-- MAIN AREA -->
 		<div id="center">
@@ -40,11 +39,8 @@ require_once '../config/init.php';
 			<div id="RealGround"></div>
 			
 			<!-- CONTENT -->
-			<div id="content">
-				
-				<!-- -->
-				
-			</div>
+			<div id="content"></div>
+
 		</div>
 		
 		<!--<div id="modal_screen" class="">
@@ -65,15 +61,15 @@ require_once '../config/init.php';
 				<!-- MENU -->
 				<div id="userMenu">
 					<div id="Schemes">
-						<?php
-							require_once LIBRARIES.'content.class.php';
+						<?php/*
+							require_once LIBRARIES.'author.class.php';
 							$C = new Content();
 							$usedSchemes = $C->Get_UsedSchemes();
 							foreach($usedSchemes as $scheme){
 								echo '<div class="scheme ico_'.$scheme['T_TYPE_CODE'].'" rel="'.$scheme['T_ID'].'" title="'.$scheme['T_TYPE_CODE'].'">'.
 										ucfirst(preg_replace('/(?!^)([[:upper:]][[:lower:]]+)/',' $0',$scheme['T_TYPE_NAME'])).' ('.$scheme['MCOUNT'].')'.
 									 '</div>';
-							}
+							}*/
 						?>
 						<div class="scheme allSchemes" rel="*">Tous</div>
 					</div>
@@ -113,10 +109,22 @@ require_once '../config/init.php';
 									<span>reçu par mail ou donné par un insoumis</span>
 								</ins>
 								<del>
-									<input type="text" name="TB_ticket_A" value="" size="4" maxlength="4" placeholder="X1X2"/> - 
-									<input type="text" name="TB_ticket_B" value="" size="4" maxlength="4" placeholder="Y3Y4"/> - 
-									<input type="text" name="TB_ticket_C" value="" size="4" maxlength="4" placeholder="Z5Z6"/> - 
-									<input type="text" name="TB_ticket_D" value="" size="2" maxlength="2" placeholder="AB"/>
+									<?php
+									$TA=$TB=$TC=$TD='';
+									if(isset($_GET['ticket'])){
+										$T=explode('-',$_GET['ticket']);
+										if(sizeof($T)==4){
+											$TA=$T[0];
+											$TB=$T[1];
+											$TC=$T[2];
+											$TD=$T[3];
+										}
+									}
+									?>
+									<input type="text" name="TB_ticket_A" value="<?=$TA?>" size="4" maxlength="4" placeholder="X1X2"/> - 
+									<input type="text" name="TB_ticket_B" value="<?=$TB?>" size="4" maxlength="4" placeholder="Y3Y4"/> - 
+									<input type="text" name="TB_ticket_C" value="<?=$TC?>" size="4" maxlength="4" placeholder="Z5Z6"/> - 
+									<input type="text" name="TB_ticket_D" value="<?=$TD?>" size="2" maxlength="2" placeholder="AB"/>
 								</del>
 							</p>
 							<p>
@@ -132,9 +140,11 @@ require_once '../config/init.php';
 								<del><input type="password" name="TB_pass" value="" /></del>
 							</p>
 							<p>
+								<ins class="result"></ins>
 								<del><input type="button" name="TB_submit" value="Créer mon compte" /></del>
 							</p>
 						</form>
+						<div class="loadingOverlay"></div>
 					</div>
 
 					<!-- LOGIN BOX -->
@@ -143,17 +153,19 @@ require_once '../config/init.php';
 						<form name="loginForm" action="#" method="POST">
 							<p>
 								<ins>Mail :</ins>
-								<del><input type="text" name="LB_mail" value="" maxlength="50" placeholder="xxx@yyy.zz"/></del>
+								<del><input type="text" name="LB_mail" value="nicolas.lolmede@gmail.com" maxlength="50" placeholder="xxx@yyy.zz"/></del>
 							</p>
 							<p>
 								<ins>Mot de passe :</ins>
-								<del><input type="password" name="LB_pass" value=""/></del>
+								<del><input type="password" name="LB_pass" value="Polopopo42!"/></del>
 							</p>
 							<p>&nbsp;<del>&nbsp;</del></p>
 							<p>
+								<ins class="result"></ins>
 								<del><input type="button" name="LB_submit" value="Connexion" /></del>
 							</p>
 						</form>
+						<div class="loadingOverlay"></div>
 					</div>
 
 				</div>

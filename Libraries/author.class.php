@@ -3,7 +3,7 @@
 /* REQUIRES */
 require_once LIBRARIES.'SQL.class.php';
 
-class Content {
+class Author {
     
     private $debug = true;
     private $SQL = null;
@@ -26,6 +26,45 @@ class Content {
             $this->SQL = new SQLManager();
         return $this->SQL;
     }
+
+    /*
+     *
+     *
+     *
+     *
+     ***** FIELDS CORRECTION *****
+     *
+     *
+     *
+     *
+     *
+     */
+
+    public function CheckInput($type,$value){
+        switch($type){
+            case'M':
+                if(preg_match('/^([a-zA-Z0-9\._+-]+)@([a-zA-Z0-9._-]+)\.([a-zA-Z]{2,6})$/', $value)){
+                    return true;
+                }
+            break;
+            case'P':
+                if(preg_match('/^\S*(?=\S*[a-z]{1,})(?=\S*[A-Z]{1,})(?=\S*[0-9]{1,})(?=\S*[!\-_@#+\.]{1,})([a-zA-Z0-9!\-_@#+\.]){8,}$/', $value)){
+                    return true;
+                }
+            break;
+            case'T4':
+                if(preg_match('/^[A-Z0-9]{4,}$/', $value)){
+                    return true;
+                }
+            break;
+            case'T2':
+                if(preg_match('/^[A-Z0-9]{2,}$/', $value)){
+                    return true;
+                }
+            break;
+        }
+        return false;
+    }
     
     
     /*
@@ -40,6 +79,50 @@ class Content {
      *
      */
     
+    public function Suscribe($D){
+        $SQL = $this->getSQL();
+        $ticket = $D['TB_ticket_A'].'-'.$D['TB_ticket_B'].'-'.$D['TB_ticket_C'].'-'.$D['TB_ticket_D'];
+        $req='call GET_TICKET_AVAILABLE('.$SQL->GetLink()->quote($ticket).');';
+        try{ $res=$SQL->Request($req,"Fetch");}catch(Exception $e){echo'[ERROR] in '.basename(__FILE__).' with '.__FUNCTION__.'() @ '.__LINE__.':'."<br/>\n";if($SQL->debugMode){echo'<pre>'.($e.message).'</pre>';}return false;}
+        if(intval($res['EXIST'])==0){
+            return 'unavailable';
+        }else{
+
+            $req='call CHECK_MAIL_EXISTS('.$SQL->GetLink()->quote($D['TB_mail']).');';
+            try{ $res=$SQL->Request($req,"Fetch");}catch(Exception $e){echo'[ERROR] in '.basename(__FILE__).' with '.__FUNCTION__.'() @ '.__LINE__.':'."<br/>\n";if($SQL->debugMode){echo'<pre>'.($e.message).'</pre>';}return false;}
+            if(intval($res['EXIST'])>0){
+                return 'mailExists';
+            }else{
+
+                include(CONFIG.'security.php');
+                $req='call SET_SUBSCRIPTION('.
+                    $SQL->GetLink()->quote($ticket).','.
+                    '\'Rédacteur_'.rand(1111,9999).'\','.
+                    $SQL->GetLink()->quote($D['TB_mail']).','.
+                    '\''.md5($security['prefix'].$D['TB_pass'].$security['suffix']).'\''.
+                    ');';
+                try{ $res=$SQL->Request($req,"Result");}catch(Exception $e){echo'[ERROR] in '.basename(__FILE__).' with '.__FUNCTION__.'() @ '.__LINE__.':'."<br/>\n";if($SQL->debugMode){echo'<pre>'.($e.message).'</pre>';}return false;}
+                if($res==true){
+                    return 'ok';
+                    $this->Login($D['TB_mail'],$D['TB_pass']);
+                }else{
+                    return 'unknowError';
+                }
+            }
+        }
+    }
+
+    public function Login($MAIL,$PASS){
+        include(CONFIG.'security.php');
+        $req='call GET_AUTH('.$SQL->GetLink()->quote($MAIL).',\''.md5($security['prefix'].$PASS.$security['suffix']).'\');';
+        try{ $res=$SQL->Request($req,"Fetch");}catch(Exception $e){echo'[ERROR] in '.basename(__FILE__).' with '.__FUNCTION__.'() @ '.__LINE__.':'."<br/>\n";if($SQL->debugMode){echo'<pre>'.($e.message).'</pre>';}return false;}
+        if(intval($res['AUT_ID'])>0){
+            return 'ok';
+        }else{
+            return 'accountNotFound';
+        }
+    }
+
     public function Get_UsedSchemes(){
         $SQL = $this->getSQL();
         $req='call GET_SCHEMES();';

@@ -4,3 +4,4 @@
 **/*.pspimage
 **/*.db
 **/*.7z
+/config/security.php

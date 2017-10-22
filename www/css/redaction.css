@@ -672,19 +672,19 @@ div#center div#content {
 	border: 2px solid <?=$color_Gray_Dark?>;
 	background-color: <?=$color_Blue_Light?>;
 	
-	border-radius: 16px;
-	-o-border-radius: 16px;
-	-ms-border-radius: 16px;
-	-moz-border-radius: 16px;
-	-khtml-border-radius: 16px;
-	-webkit-border-radius: 16px;
+	border-radius: 6px;
+	-o-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
 	
-	box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.1), inset 3px 3px 6px rgba(255,255,255,0.9);
-	-o-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.1), inset 3px 3px 6px rgba(255,255,255,0.9);
-	-ms-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.1), inset 3px 3px 6px rgba(255,255,255,0.9);
-	-moz-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.1), inset 3px 3px 6px rgba(255,255,255,0.9);
-	-khtml-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.1), inset 3px 3px 6px rgba(255,255,255,0.9);
-	-webkit-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.1), inset 3px 3px 6px rgba(255,255,255,0.9);
+	box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.05), inset 3px 3px 6px rgba(255,255,255,0.9);
+	-o-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.05), inset 3px 3px 6px rgba(255,255,255,0.9);
+	-ms-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.05), inset 3px 3px 6px rgba(255,255,255,0.9);
+	-moz-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.05), inset 3px 3px 6px rgba(255,255,255,0.9);
+	-khtml-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.05), inset 3px 3px 6px rgba(255,255,255,0.9);
+	-webkit-box-shadow: 4px 4px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(0,0,0,0.05), inset 3px 3px 6px rgba(255,255,255,0.9);
 }
 @media (max-width:768px){
 	div#center div#content {
